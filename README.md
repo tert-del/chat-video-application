@@ -79,33 +79,77 @@ All changes apply live!
 ## 📁 Folder Structure
 
 <pre>
-chat-application/
+chat-call-application/
 ├── backend/
-|   └── src/
-│       ├── controllers/
-│       ├── lib/
-│       ├── middleware/
-│       ├── models/
-│       |── routes/
-│       |── routes/
-|       ├── .env
-│       └── index.js
-|
-├── frontend/
-│   ├── public/
+│   ├── node_modules/
+│   ├── package.json
+│   ├── package-lock.json
 │   └── src/
-│       ├── components/
-│       ├── costants/
+│       ├── controllers/
+│       │   ├── auth.controller.js
+│       │   └── message.controller.js
 │       ├── lib/
-│       ├── pages/
-│       ├── store/
-│       └── App.jsx
+│       │   ├── cloudinary.js
+│       │   ├── db.js
+│       │   ├── socket.js
+│       │   └── utils.js
+│       ├── middleware/
+│       │   └── auth.middleware.js
+│       ├── models/
+│       │   ├── message.model.js
+│       │   └── user.model.js
+│       ├── routes/
+│       │   ├── auth.route.js
+│       │   └── message.route.js
+│       ├── seeds/
+│       │   └── user.seed.js
+│       └── index.js
+├── frontend/
+│   ├── dist/
+│   ├── node_modules/
+│   ├── public/
+│   │   ├── avatar.png
+│   │   ├── logo-1.svg
+│   │   ├── logo.svg
+│   │   └── vite.svg
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ChatContainer.jsx
+│   │   │   ├── ChatHeader.jsx
+│   │   │   ├── MessageInput.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── NoChatSelected.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── skeletons/
+│   │   │       ├── MessageSkeleton.jsx
+│   │   │       └── SidebarSkeleton.jsx
+│   │   ├── constants/
+│   │   ├── lib/
+│   │   │   ├── axios.js
+│   │   │   └── utils.js
+│   │   ├── pages/
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── ProfilePage.jsx
+│   │   │   └── SignUpPage.jsx
+│   │   ├── store/
+│   │   │   ├── useAuthStore.js
+│   │   │   ├── useChatStore.js
+│   │   │   └── useThemeStore.js
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tailwind.config.js
+│   ├── vite.config.js
+│   └── README.md
+├── .gitignore
 ├── README.md
 └── package.json
-
 </pre>
 
-⚙️Setup .env file
+## ⚙️ Setup .env file
 
 <pre>
 MONGODB_URI=mongodb+srv://your_username:your_password@cluster0.ggok6.mongodb.net/chat_db?retryWrites=true&w=majority&appName=Cluster0
@@ -117,16 +161,16 @@ CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 </pre>
 
-### 🔧 Setup Instructions
+## 🔧 Setup Instructions
 
 1. Clone the Repository
 
    ```shell
-   git clone https://github.com/tezivindh/chat-application.git
-   cd chat-application
+   git clone https://github.com/tezivindh/chat-call-application.git
+   cd chat-call-application
    ```
 
-2. Build the app
+2. Install Dependencies and Build the app
 
    ```shell
    npm run build
@@ -138,8 +182,21 @@ CLOUDINARY_API_SECRET=your_cloudinary_api_secret
    npm start
    ```
 
-🤝 Contributing
+### Development Mode
 
-<p>
-Pull requests are welcome! If you’d like to fix a bug or suggest a feature, feel free to fork and submit a PR 🚀</p>
+To run the application in development mode:
+
+```shell
+# Start backend in development mode
+cd backend
+npm run dev
+
+# In another terminal, start frontend in development mode
+cd frontend
+npm run dev
+```
+
+## 🤝 Contributing
+
+Pull requests are welcome! If you'd like to fix a bug or suggest a feature, feel free to fork and submit a PR 🚀 
 "# chat-video-application" 
