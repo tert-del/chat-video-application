@@ -1,253 +1,303 @@
-```markdown
-# 💬 Chat Video Application
+# Chat Video Application
 
-A real-time chat (and lightweight video-capable) application built with React + Vite on the frontend and Node.js + Express on the backend. Real-time messaging and presence are powered by Socket.IO; authentication uses JWT; images are uploaded to Cloudinary; the database is MongoDB. The project ships a theme switcher, responsive UI, and a compact global state using Zustand.
+A modern, real-time chat application built with React, Node.js, and Socket.io. Features include user authentication, real-time messaging, image sharing, online status indicators, and a beautiful responsive UI with dark/light theme support.
 
-This file is a proposed, corrected and expanded README to replace the previous README in the repository.
+## 🚀 Features
 
----
+### Core Functionality
+- **Real-time Messaging**: Instant message delivery using Socket.io
+- **User Authentication**: Secure signup/login with JWT tokens
+- **Image Sharing**: Upload and share images in conversations
+- **Online Status**: See who's online with real-time indicators
+- **Profile Management**: Update profile pictures and view account information
 
-## 🚀 Key features
+### UI/UX Features
+- **Responsive Design**: Works seamlessly on desktop and mobile
+- **Dark/Light Theme**: Toggle between themes with persistent storage
+- **Modern UI**: Beautiful gradient designs and smooth animations
+- **Loading States**: Skeleton loaders and smooth transitions
+- **Toast Notifications**: User-friendly feedback messages
 
-- Real-time messaging with Socket.IO (presence, typing, online users)
-- JWT authentication with secure password hashing (bcrypt)
-- Private and group chats
-- Image uploads (Cloudinary)
-- Theme switcher (DaisyUI/Tailwind) — multiple themes
-- Global state with Zustand
-- Human-friendly timestamps (Day.js)
-- Responsive UI for mobile and desktop
+### Technical Features
+- **State Management**: Zustand for efficient state management
+- **Real-time Updates**: Socket.io for live communication
+- **Image Upload**: Cloudinary integration for image storage
+- **Database**: MongoDB with Mongoose ODM
+- **Security**: JWT authentication with protected routes
 
----
+## 🛠️ Tech Stack
 
-## 🛠 Tech stack
+### Frontend
+- **React 18** - UI framework
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling framework
+- **Zustand** - State management
+- **Socket.io Client** - Real-time communication
+- **React Router DOM** - Client-side routing
+- **Axios** - HTTP client
+- **Lucide React** - Icon library
+- **React Hot Toast** - Notifications
+- **Day.js** - Date manipulation
 
-- Frontend: React, Vite, Tailwind CSS, DaisyUI
-- Backend: Node.js, Express
-- Real-time: Socket.IO
-- Database: MongoDB (Atlas or self-hosted)
-- Auth: JWT, bcrypt
-- Media: Cloudinary
-- State management: Zustand
-- Date handling: Day.js
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **Socket.io** - Real-time communication
+- **MongoDB** - Database
+- **Mongoose** - ODM
+- **JWT** - Authentication
+- **Bcryptjs** - Password hashing
+- **Cloudinary** - Image storage
+- **CORS** - Cross-origin resource sharing
+- **Cookie Parser** - Cookie handling
 
----
+## 📁 Project Structure
 
-## 📸 Screenshots
-
-(Existing screenshots referenced in the repo)
-- Signup / Login:
-  - https://res.cloudinary.com/dxgzgmmnp/image/upload/v1745260929/jjlfbtcxwmhkqn1pbtib.png
-  - https://res.cloudinary.com/dxgzgmmnp/image/upload/v1745260943/uqmbevd3oak38wwia4zs.png
-- Chat UI:
-  - https://res.cloudinary.com/dxgzgmmnp/image/upload/v1745260917/jkumoppkl6w1p7uokqc0.png
-- Theme selection:
-  - https://res.cloudinary.com/dxgzgmmnp/image/upload/v1745260960/loz3iev66zlb0sb9jafz.png
-
----
-
-## 📁 Repository structure (what's in this repo)
-
-Top-level layout and where to find things:
-
+```
 chat-video-application/
-├── backend/                      # Backend server (Express + Socket.IO)
+├── backend/
+│   ├── src/
+│   │   ├── controllers/          # Request handlers
+│   │   │   ├── auth.controller.js
+│   │   │   └── message.controller.js
+│   │   ├── lib/                  # Utility libraries
+│   │   │   ├── cloudinary.js
+│   │   │   ├── db.js
+│   │   │   ├── socket.js
+│   │   │   └── utils.js
+│   │   ├── middleware/           # Custom middleware
+│   │   │   └── auth.middleware.js
+│   │   ├── models/               # Database models
+│   │   │   ├── message.model.js
+│   │   │   └── user.model.js
+│   │   ├── routes/               # API routes
+│   │   │   ├── auth.route.js
+│   │   │   └── message.route.js
+│   │   ├── seeds/                # Database seeds
+│   │   │   └── user.seed.js
+│   │   └── index.js              # Server entry point
 │   ├── package.json
-│   └── src/
-│       ├── controllers/
-│       │   ├── auth.controller.js
-│       │   └── message.controller.js
-│       ├── lib/
-│       │   ├── cloudinary.js
-│       │   ├── db.js
-│       │   ├── socket.js
-│       │   └── utils.js
-│       ├── middleware/
-│       │   └── auth.middleware.js
-│       ├── models/
-│       │   ├── message.model.js
-│       │   └── user.model.js
-│       ├── routes/
-│       │   ├── auth.route.js
-│       │   └── message.route.js
-│       ├── seeds/
-│       │   └── user.seed.js
-│       └── index.js
-├── frontend/                     # Frontend app (React + Vite)
+│   └── package-lock.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/           # React components
+│   │   │   ├── ChatContainer.jsx
+│   │   │   ├── ChatHeader.jsx
+│   │   │   ├── MessageInput.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── NoChatSelected.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── skeletons/        # Loading components
+│   │   ├── pages/                # Page components
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── ProfilePage.jsx
+│   │   │   └── SignUpPage.jsx
+│   │   ├── store/                # State management
+│   │   │   ├── useAuthStore.js
+│   │   │   ├── useChatStore.js
+│   │   │   └── useThemeStore.js
+│   │   ├── lib/                  # Utility functions
+│   │   │   ├── axios.js
+│   │   │   └── utils.js
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── public/                   # Static assets
 │   ├── package.json
-│   ├── public/
-│   │   ├── avatar.png
-│   │   ├── logo-1.svg
-│   │   ├── logo.svg
-│   │   └── vite.svg
-│   └── src/
-│       ├── components/
-│       │   ├── ChatContainer.jsx
-│       │   ├── ChatHeader.jsx
-│       │   ├── MessageInput.jsx
-│       │   ├── Navbar.jsx
-│       │   ├── NoChatSelected.jsx
-│       │   ├── Sidebar.jsx
-│       │   └── skeletons/
-│       │       ├── MessageSkeleton.jsx
-│       │       └── SidebarSkeleton.jsx
-│       ├── constants/
-│       ├── lib/
-│       │   ├── axios.js
-│       │   └── utils.js
-│       ├── pages/
-│       │   ├── HomePage.jsx
-│       │   ├── LoginPage.jsx
-│       │   ├── ProfilePage.jsx
-│       │   └── SignUpPage.jsx
-│       ├── store/
-│       │   ├── useAuthStore.js
-│       │   ├── useChatStore.js
-│       │   └── useThemeStore.js
-│       ├── App.jsx
-│       ├── main.jsx
-│       └── index.css
-├── .gitignore
-├── README.md                     # <- this file
-└── package.json                  # (optional root scripts / meta)
-
-Note: The frontend also contains its own README at frontend/README.md with Vite notes.
-
----
-
-## ⚙️ Environment variables
-
-Create a .env file in the backend folder (backend/.env) with values similar to:
-
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/chat_db?retryWrites=true&w=majority
-PORT=5001
-JWT_SECRET=your_super_secret_jwt_key
-
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-(Optional)
-FRONTEND_URL=http://localhost:5173
-CORS_ORIGINS=http://localhost:5173
-
-Keep secrets out of source control. Use deployment platform secret management in production.
-
----
-
-## 🔧 Local development (step-by-step)
-
-1. Clone the repository
-```bash
-git clone https://github.com/tert-del/chat-video-application.git
-cd chat-video-application
+│   └── vite.config.js
+├── package.json                  # Root package.json
+└── README.md
 ```
 
-2. Backend (run the API + socket server)
-```bash
-cd backend
-npm install
-# Development (watch mode) if available:
-npm run dev
-# or to run normally:
-npm start
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- MongoDB (local or cloud instance)
+- Cloudinary account (for image storage)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/tert-del/chat-video-application.git
+   cd chat-video-application
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   
+   Create a `.env` file in the `backend` directory:
+   ```env
+   PORT=5001
+   MONGODB_URI=mongodb://localhost:27017/chat-app
+   JWT_SECRET=your-jwt-secret-key
+   CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+   CLOUDINARY_API_KEY=your-cloudinary-api-key
+   CLOUDINARY_API_SECRET=your-cloudinary-api-secret
+   NODE_ENV=development
+   ```
+
+4. **Start the development servers**
+
+   **Option 1: Start both servers simultaneously**
+   ```bash
+   npm run dev
+   ```
+
+   **Option 2: Start servers individually**
+   
+   Backend (Terminal 1):
+   ```bash
+   cd backend
+   npm run dev
+   ```
+   
+   Frontend (Terminal 2):
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+5. **Access the application**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:5001
+
+## 📱 Usage
+
+### Authentication
+1. **Sign Up**: Create a new account with email and password
+2. **Login**: Sign in with your credentials
+3. **Profile**: Update your profile picture and view account information
+
+### Chat Features
+1. **Start Chatting**: Select a user from the sidebar to start a conversation
+2. **Send Messages**: Type text messages and press Enter or click Send
+3. **Share Images**: Click the image icon to upload and share images
+4. **Online Status**: See which users are currently online
+5. **Filter Users**: Toggle "Show online only" to filter online users
+
+### UI Features
+1. **Theme Toggle**: Switch between light and dark themes
+2. **Responsive Design**: Works on desktop, tablet, and mobile devices
+3. **Real-time Updates**: Messages appear instantly without page refresh
+
+## 🔧 API Endpoints
+
+### Authentication Routes (`/app/api/auth`)
+- `POST /signup` - Create new user account
+- `POST /login` - User login
+- `POST /logout` - User logout
+- `GET /check` - Check authentication status
+- `PUT /update-profile` - Update user profile
+
+### Message Routes (`/app/api/messages`)
+- `GET /users` - Get all users for sidebar
+- `GET /:id` - Get messages with specific user
+- `POST /send/:id` - Send message to specific user
+
+## 🗄️ Database Schema
+
+### User Model
+```javascript
+{
+  email: String (required, unique),
+  fullName: String (required),
+  password: String (required, minlength: 6),
+  profilePic: String (default: ""),
+  createdAt: Date,
+  updatedAt: Date
+}
 ```
 
-3. Frontend (run the UI)
-```bash
-cd frontend
-npm install
-npm run dev
+### Message Model
+```javascript
+{
+  senderId: ObjectId (ref: User),
+  receiverId: ObjectId (ref: User),
+  text: String,
+  image: String,
+  createdAt: Date,
+  updatedAt: Date
+}
 ```
 
-- Typical ports: Vite frontend http://localhost:5173, backend http://localhost:5001
-- If ports differ, update FRONTEND_URL or axios baseURL in frontend/src/lib/axios.js.
+## 🔒 Security Features
 
----
+- **JWT Authentication**: Secure token-based authentication
+- **Password Hashing**: Bcrypt for secure password storage
+- **Protected Routes**: Middleware to protect sensitive endpoints
+- **CORS Configuration**: Proper cross-origin resource sharing setup
+- **Input Validation**: Server-side validation for all inputs
 
-## 🧭 Production build & deployment
+## 🎨 Styling & UI
 
-Frontend:
+- **Tailwind CSS**: Utility-first CSS framework
+- **Custom Components**: Reusable React components
+- **Responsive Design**: Mobile-first approach
+- **Dark Mode**: Complete dark/light theme support
+- **Animations**: Smooth transitions and hover effects
+- **Loading States**: Skeleton loaders for better UX
+
+## 🚀 Deployment
+
+### Production Build
 ```bash
-cd frontend
 npm run build
-# deploy the contents of frontend/dist to your static host (Netlify, Vercel, S3, etc.)
 ```
 
-Backend:
-- Ensure backend environment variables are set in your hosting environment.
-- Start the backend with `npm start` or use a process manager (PM2) or containerize with Docker.
+### Environment Variables for Production
+- Set `NODE_ENV=production`
+- Configure production MongoDB URI
+- Set up production Cloudinary credentials
+- Configure CORS for production domain
 
-Optional: Serve the frontend build from the backend by copying frontend/dist into backend/public (or similar) and configuring Express static hosting.
+### Deployment Options
+- **Frontend**: Vercel, Netlify, or any static hosting
+- **Backend**: Heroku, Railway, DigitalOcean, or AWS
+- **Database**: MongoDB Atlas or self-hosted MongoDB
 
----
+## 🤝 Contributing
 
-## 🔌 API (high-level)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-These are representative endpoints — check backend/src/routes for exact paths and request/response shapes:
+## 📝 License
 
-- POST /api/auth/signup — register new user
-- POST /api/auth/login — log in and receive JWT
-- GET /api/messages/:conversationId — fetch messages for a conversation
-- POST /api/messages — create a message (text and/or image url)
+This project is licensed under the ISC License.
 
-Real-time flows use Socket.IO events (connect, disconnect, send_message, receive_message, user_online, user_offline). Review backend/src/lib/socket.js and frontend socket usage for specifics.
+## 🐛 Troubleshooting
 
----
+### Common Issues
 
-## ☁️ Cloudinary
+1. **MongoDB Connection Error**
+   - Ensure MongoDB is running
+   - Check the connection string in `.env`
 
-- The backend uses Cloudinary for image uploads. Ensure CLOUDINARY_* env vars are set and backend/lib/cloudinary.js initializes with them.
-- Frontend uploads should POST to a backend endpoint that handles the Cloudinary upload (avoid embedding Cloudinary keys in client code).
+2. **Socket.io Connection Issues**
+   - Verify CORS configuration
+   - Check if both frontend and backend are running
 
----
+3. **Image Upload Issues**
+   - Verify Cloudinary credentials
+   - Check file size limits
 
-## 🧪 Seeding and sample data
+4. **Authentication Problems**
+   - Clear browser cookies
+   - Check JWT secret configuration
 
-- A seed script exists at backend/src/seeds/user.seed.js — run it manually or wire it into an npm script to populate sample users for testing.
+## 📞 Support
 
----
-
-## ❗ Troubleshooting
-
-- MongoDB connection errors: check MONGODB_URI, username/password, and Atlas IP whitelist (or use SRV and open access for dev).
-- JWT auth issues: confirm JWT_SECRET is set and both frontend and backend use the same auth flows.
-- Cloudinary errors: verify cloud name and API key/secret.
-- Socket.IO connection issues: confirm correct socket path, CORS, and that frontend points to the correct backend socket URL.
-- Port conflicts: adjust PORT in backend/.env or Vite dev server port in frontend/vite.config.js.
-
----
-
-## ✅ Contributing
-
-Contributions welcome — please:
-1. Open an issue describing the change if it's non-trivial.
-2. Create a branch for your PR: feature/..., fix/..., etc.
-3. Add tests or steps to reproduce your fix if applicable.
-4. Follow consistent code style (prettier / eslint if configured).
+For support and questions, please open an issue in the repository or contact the development team.
 
 ---
 
-## 📜 License
-
-Add a LICENSE file to the repository and reference it here (e.g., MIT). If you want me to add a LICENSE file, tell me which license to use.
-
----
-
-## 📫 Maintainer / Contact
-
-Maintainer: tert-del — https://github.com/tert-del
-
----
-
-## Notes & next steps
-
-- This README corrects the project name, clone URL, and folder naming (previous README referenced another repo/name).
-- If you want, I can:
-  - produce a ready-to-commit patch that replaces README.md
-  - add a LICENSE file
-  - add or update backend/frontend npm scripts in package.json if needed
-  - update frontend README to include auth / running info
-Please tell me which of the above you'd like me to prepare next.
-```
-```
+**Built with ❤️ using React, Node.js, and Socket.io**
